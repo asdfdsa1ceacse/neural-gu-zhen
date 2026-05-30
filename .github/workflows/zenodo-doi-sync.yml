@@ -1,0 +1,57 @@
+name: Zenodo DOI Sync
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  sync-doi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fetch Zenodo DOI
+        id: doi
+        run: |
+          python3 .github/scripts/fetch_zenodo_doi.py > /tmp/doi_output.txt 2>&1
+          cat /tmp/doi_output.txt
+          # Parse outputs
+          while IFS='=' read -r key value; do
+            if [ -n "$key" ] && [ -n "$value" ]; then
+              echo "$key=$value" >> $GITHUB_OUTPUT
+            fi
+          done < /tmp/doi_output.txt
+
+      - name: Update README badge
+        if: steps.doi.outputs.doi != 'UNKNOWN'
+        run: |
+          python3 .github/scripts/update_readme_doi.py \
+            "${{ steps.doi.outputs.doi }}" \
+            "${{ steps.doi.outputs.url }}"
+
+      - name: Update CITATION.cff
+        if: steps.doi.outputs.doi != 'UNKNOWN'
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          VER="${TAG#v}"
+          python3 .github/scripts/update_citation.py \
+            "${{ steps.doi.outputs.doi }}" \
+            "$VER"
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md CITATION.cff
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update DOI for ${{ github.event.release.tag_name }}"
+            git push
+            echo "Changes committed and pushed"
+          fi

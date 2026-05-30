@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Zhong"
+    given-names: "Yiming"
+    orcid: "https://orcid.org/0009-0003-8829-935X"
+title: "Neural Gu-Zhen: A Multi-Chain DNA Magnetic Matching Memory Ecosystem for AI Agents"
+version: 1.0.0
+date-released: 2026-05-31
+doi: "10.5281/zenodo.XXXXXXX"
+repository-code: "https://github.com/asdfdsa1ceacse/neural-gu-zhen"
+license: "MIT"

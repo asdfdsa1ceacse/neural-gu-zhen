@@ -1,5 +1,7 @@
 # Neural Gu-Zhen
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+
 **神经蛊阵** — 基于多链 DNA 磁吸匹配的 AI Agent 记忆生态系统。
 
 ### 核心创新
