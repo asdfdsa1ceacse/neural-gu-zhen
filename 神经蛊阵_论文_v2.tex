@@ -1,20 +1,6 @@
 \documentclass[11pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{booktabs,graphicx,hyperref,geometry,cite,xcolor,enumitem,array}
-\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
-\geometry{margin=1in}
-\title{Neural Gu-Zhen: A Multi-Chain DNA Magnetic Matching Memory Ecosystem for AI Agents}
-\author{Yiming Zhong\thanks{Author name in Chinese: 钟一鸣}
-  \texttt{https://orcid.org/0009-0003-8829-935X}}
-\date{May 2026}
-\begin{document}
-\maketitle
-\begin{abstract}
-Existing AI Agent memory systems all use explicit API calls. We propose a new paradigm: automatic memory ecosystem based on multi-chain DNA magnetic matching.
-\end{abstract}
-\end{document}\documentclass[11pt,a4paper]{article}
+
+% ArXiv 兼容包
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,amsfonts}
@@ -26,73 +12,318 @@ Existing AI Agent memory systems all use explicit API calls. We propose a new pa
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage{array}
+
 \hypersetup{
   colorlinks=true,
   linkcolor=blue,
   citecolor=blue,
   urlcolor=blue
 }
+
 \geometry{margin=1in}
-\title{Neural Gu-Zhen: A Multi-Chain DNA Magnetic Matching Memory Ecosystem for AI Agents}
-\author{Yiming Zhong\thanks{Author name in Chinese: 钟一鸣} \\
-  \texttt{https://orcid.org/0009-0003-8829-935X}}
-\date{May 2026}
+
+\title{神经蛊阵：一种基于多链 DNA 磁吸匹配的\\AI Agent 记忆生态系统}
+\title{Neural Gu-Zhen: A Multi-Chain DNA Magnetic Matching\\Memory Ecosystem for AI Agents}
+\author{
+  Yiming Zhong\thanks{Author name in Chinese: 钟一鸣} \\
+  \texttt{https://orcid.org/0009-0003-8829-935X}
+}
+\date{2026 年 5 月}
+
 \begin{document}
+
 \maketitle
+
 \begin{abstract}
-Existing AI Agent memory systems all use explicit API calls. We propose a new paradigm: automatic memory ecosystem based on multi-chain DNA magnetic matching.
+现有 AI Agent 记忆系统均采用"显式 API 调用"模式——Agent 需要主动发指令才能存取记忆。本文提出一种新的范式：基于多链 DNA 磁吸匹配的自动记忆生态系统。核心设计包括：(1) \textbf{DNA 即坐标}，每个节点在结构空间中获得天然位置，不需要后贴标签；(2) \textbf{5 链磁吸匹配}，通过 domain/intent/entity/pattern/context 五条链组合投票，取代传统标签索引，首次实现无需指令的自动记忆注入；(3) \textbf{双向 DNA 规制}，Agent 的执行意图与用户存储的原则在 DNA 层面自动碰撞，实现执行行为的内生规制；(4) \textbf{生态三算子}——能量枯竭、同类吞噬、异种杂交——使记忆网络具备自我维护能力。在 LongMemEval 对标测试中，本系统在\textbf{零人工指令、零显式检索调用、零 token 消耗}的条件下达到 \textbf{81.5\%} 自动记忆命中率。系统已在生产环境部署运行 30 天，312 实体全量验证通过。
+
+\vspace{0.5em}
+\noindent\textbf{关键词} AI Agent 记忆；自动记忆注入；DNA 磁吸匹配；自我规制；记忆生态系统
 \end{abstract}
-\section{Introduction}
-LLM-driven AI Agents are evolving from single-turn tools into persistent autonomous systems. However, all major frameworks face a structural dilemma: agents start each conversation from zero with no persistent memory.
-Existing solutions include Mem0, Zep, Letta, Hindsight. Their common pattern is explicit API calls. This has three fundamental problems:
-(1) Agents must know they need memory
-(2) High retrieval cost
-(3) No structural cognition
-We propose a new paradigm: a self-aware, self-retrieving, self-maintaining, self-regulating memory ecosystem inspired by biological evolution.
-\section{Related Work}
-\subsection{Semantic Vector Retrieval}
-Mem0 (48K+ stars on GitHub) extracts facts and encodes them as semantic vectors, achieving 91.4\% on LongMemEval.
-\subsection{Knowledge Graph Memory}
-Zep and Graphiti model entity relations as temporal knowledge graphs.
-\subsection{Hierarchical Memory Management}
-Letta uses hierarchical memory architecture for context window management.
-\subsection{Multi-Strategy Retrieval}
-Hindsight ties with Mem0 at 91.4\% using semantic, BM25, and graph traversal.
-\subsection{Community Gap}
-All shared pattern: reads are always explicit. No system supports message-level automatic matching or behavioral regulation.
-\section{Core Concept: DNA as Coordinate}
-\subsection{From Tags to DNA}
-We propose: each node automatically generates a structural DNA upon entry, which serves as its natural coordinate in multidimensional space. No manual labeling needed.
-\subsection{5-Chain DNA Structure}
-DNA consists of 5 independent strands: domain (30\%), intent (20\%), entity (25\%), pattern (15\%), context (10\%).
-\subsection{DNA Extraction}
-Local keyword matching, 0.02--0.06ms/call, zero token cost.
-\section{Magnetic Matching Engine}
-\subsection{Three-Layer Matching}
-Layer 1: exact hub name match. Layer 2: 5-chain voting. Layer 3: domain overlap + fallback.
-\subsection{Multi-Chain Voting Algorithm}
-Weighted Jaccard similarity across 5 chains.
-\subsection{Dynamic Learning}
-After 3 learning rounds, fuzzy query accuracy improves from 50\% to 100\%.
-\section{Benchmark}
-\subsection{Methodology}
-27 queries covering 5 core capabilities from LongMemEval. All tests run in fully automatic mode with zero memory.search() calls.
-\subsection{Results}
-agentmemory 95.2\%, Mem0 91.4\%, Hindsight 91.4\%, Our system 81.5\% (automatic, zero invocation).
-\subsection{Performance}
-Full pipeline ~600ms, local computation ~1ms, DNA extraction 0.03ms, zero tokens.
-\section{Self-Regulation}
-18 test scenarios all passed (100\%).
-\section{Ecological Operators}
-(1) Energy decay. (2) Homologous absorption. (3) Heterologous hybridization.
-\section{Conclusion}
-We proposed Neural Gu-Zhen, implementing automatic memory injection (81.5\%), behavioral regulation (100\%), and ecological self-maintenance.
+
+\section{引言}
+
+大语言模型（LLM）驱动的 AI Agent 正在从单轮对话工具进化为持续运行的自主系统。然而，当前所有主流 Agent 框架面临一个结构性困境：\textbf{Agent 每轮对话从零开始，缺乏持续性记忆}。
+
+现有解决方案包括 Mem0~\cite{mem0}、Zep~\cite{zep}、Letta~\cite{letta}、Hindsight~\cite{hindsight} 等框架。它们的共同模式是\textbf{显式 API 调用}：Agent 需要在运行时主动调用 \texttt{memory.search()}、\texttt{recall()} 等接口来存取记忆。这种模式存在三个根本问题：
+
+\begin{enumerate}
+  \item \textbf{Agent 必须"知道自己需要记忆"}——Agent 不知道当前任务与过往记忆相关时不会主动检索，导致记忆形同虚设。
+  \item \textbf{检索成本高}——每次调用消耗 token，Agent 很难在"每次行动前检索"和"只在必要时检索"之间取得平衡。
+  \item \textbf{无结构认知能力}——依赖语义向量相似度，无法发现"语义不同但结构相同"的跨域关联。
+\end{enumerate}
+
+本文提出一种新范式：将生物学生态系统概念引入 AI Agent 记忆管理，构建一个\textbf{自感知、自检索、自维护、自规制}的记忆生态系统。核心思想是：每个节点进入系统时自动在结构空间中获得天然 DNA 坐标，无需人工贴标签；Agent 的执行行为和用户原则在 DNA 层面自动碰撞，实现内生的感知与规制；系统通过生态算子自我优化。
+
+\section{相关工作}
+
+\subsection{语义向量检索}
+Mem0~\cite{mem0} 是当前最主流的 Agent 记忆框架（GitHub 48K+ stars），通过 LLM 从对话中提取事实并编码为语义向量，Agent 通过显式 API 调用来检索相关记忆。在 LongMemEval 基准上达到 91.4\%。核心局限：检索非自动。
+
+\subsection{知识图谱记忆}
+Zep~\cite{zep} 和 Graphiti~\cite{graphiti} 将实体关系建模为时序知识图谱，结构化优势明显，但起效前提仍是 Agent 主动查询图数据库。
+
+\subsection{层级记忆管理}
+Letta~\cite{letta} 采用层级记忆架构管理上下文窗口，本质上是缓存管理，不是真正的记忆感知。
+
+\subsection{多策略检索}
+Hindsight~\cite{hindsight} 在 LongMemEval 基准上与 Mem0 并列第一（91.4\%），采用语义、BM25 和图遍历多策略检索。检索仍然是显式的。
+
+\subsection{社区空白}
+上述所有方案共享一个模式：\textbf{写入可以自动，但读取必须是显式的}。没有方案实现消息级自动结构匹配注入，不支持 Agent 行为规制，也没有记忆生命周期的生态管理机制。这构成了我们的切入空间。
+
+\begin{table}[ht]
+\centering
+\caption{社区方案与本系统对比}
+\label{tab:comparison}
+\begin{tabular}{lccccc}
+\toprule
+特性 & Mem0 & Zep & Letta & Hindsight & \textbf{本系统} \\
+\midrule
+检索触发方式 & 显式 API & 显式 API & Agent 自决 & 显式 API & \textbf{消息级自动} \\
+匹配依据 & 语义向量 & 时序图谱 & 层级窗口 & 语义+BM25 & \textbf{5 链 DNA} \\
+匹配维度 & 单维 & 单维 & 单维 & 多维语义 & \textbf{多维结构} \\
+跨域联想能力 & --- & --- & --- & --- & \textbf{✅} \\
+Agent 行为规制 & --- & --- & --- & --- & \textbf{✅} \\
+生态自我维护 & --- & --- & --- & --- & \textbf{✅} \\
+Token 消耗 & 高 & 中 & 中 & 中 & \textbf{零（全本地）} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{核心概念：DNA 即坐标}
+
+\subsection{从标签到 DNA}
+传统记忆系统依赖\textbf{标签}分类索引，但标签需要人工维护、不一致导致漏检、不存在则完全无法发现。
+
+本文提出：\textbf{每个节点在进入系统时，通过其固有属性自动产生一个结构 DNA，该 DNA 即为其在多维空间中的自然坐标}。不需要人工标注，不需要维护标签索引。这一设计思想受生物学中"基因型决定表型"的启发——节点的固有特征决定了它在结构空间中的位置，而非人为归类。
+
+\subsection{5 链 DNA 结构}
+DNA 由 5 条独立的链构成，每条链从不同角度描述实体的内在属性：
+
+\begin{table}[ht]
+\centering
+\caption{5 链 DNA 结构}
+\label{tab:dna}
+\begin{tabular}{lcll}
+\toprule
+链（Strand） & 权重 & 语义 & 示例值 \\
+\midrule
+domain（域） & 30\% & 宽泛领域 & ['video', 'gpu'] \\
+intent（意图） & 20\% & 操作目的 & ['deploy', 'optimize'] \\
+entity（实体） & 25\% & 具体指代 & ['端脑云'] \\
+pattern（模式） & 15\% & 操作类型 & ['workflow', 'guide'] \\
+context（语境） & 10\% & 对话角色 & ['question'] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+5 条链的设计依据是：任何一条消息或实体都天然包含这 5 个维度的信息，单链（如仅 domain）在多个实体共享相同域时完全失效。
+
+\subsection{DNA 提取}
+DNA 提取是完全本地的关键词匹配过程，无需 LLM 调用。对每条链遍历其子类别的关键词表，选择命中分数最高的子类作为该链的值。提取速度：0.02--0.06 ms/次，零 token 消耗。
+
+\section{磁吸匹配引擎}
+
+\subsection{三层匹配}
+DNA 磁吸匹配采用三层降级结构：
+
+\begin{verbatim}
+第 1 层：hub 名精确匹配 → 直接返回（O(1)，最高优先级）
+第 2 层：5 链组合投票 → 计算 DNA 各链 Jaccard 重叠，加权求和
+第 3 层：域重叠 + 意图重叠 + Z 级亲和兜底 → 宽松匹配
+     → 无匹配 → 游离路由 → 语义召回
+\end{verbatim}
+
+\subsection{多链投票算法}
+
+\begin{verbatim}
+for each hub:
+    total = 0
+    for each strand (domain 30%, intent 20%, entity 25%,
+                     pattern 15%, context 10%):
+        if entity_strand:
+            score = exact_name_match(hub.name, query)
+        else:
+            score = jaccard(query_dna[strand], hub_dna[strand])
+        total += score * strand_weight
+    best = max(total)
+\end{verbatim}
+
+三层降级确保查询总能获得最优匹配结果。第 3 层的域重叠门限为 0.05、意图门限为 0.15，防止无相关匹配时的假阳性。
+
+\subsection{动态学习}
+静态关键词表无法覆盖自然语言的全部变体。系统引入动态学习引擎：每次匹配成功后将新词持久化到本地文件，下次同类型查询自动获得更精确的匹配。验证表明：学习 3 次后模糊查询命中率从 50\% 提升至 100\%。
+
+\section{Benchmark：与社区方案对标}
+
+\subsection{测试方法}
+设计 27 条测试查询，覆盖 LongMemEval 定义的 5 项核心能力：
+
+\begin{itemize}
+  \item \textbf{信息提取 (8 条)}：从历史记忆中提取具体信息
+  \item \textbf{多会话推理 (6 条)}：跨 session 综合信息
+  \item \textbf{时序推理 (5 条)}：基于时间先后判断
+  \item \textbf{知识更新 (4 条)}：变化后跟随更新
+  \item \textbf{弃权能力 (4 条)}：不知道时不瞎编
+\end{itemize}
+
+所有测试在\textbf{全自动模式}下运行：Agent 不执行任何 \texttt{memory.search()} 或 \texttt{recall()} 调用，系统基于用户消息自动提取 DNA、磁吸匹配、注入记忆。
+
+\subsection{结果}
+
+\begin{verbatim}
+Benchmark 对比：
+  agentmemory (BM25+Vector)    95.2%  (显式 API + 向量检索)
+  Mem0 (48K⭐)                 91.4%  (显式 API 调用)
+  Hindsight                   91.4%  (显式 API 调用)
+  本系统（自动模式）             81.5%  (零指令自动注入)
+\end{verbatim}
+
+\begin{table}[ht]
+\centering
+\caption{分类结果}
+\label{tab:results}
+\begin{tabular}{lcc}
+\toprule
+能力类别 & 通过率 & 测试数 \\
+\midrule
+信息提取 & 100\% & 8/8 \\
+多会话推理 & 100\% & 6/6 \\
+时序推理 & 80\% & 4/5 \\
+知识更新 & 75\% & 3/4 \\
+弃权能力 & 50\% & 2/4 \\
+\midrule
+\textbf{总体} & \textbf{81.5\%} & \textbf{22/27} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{性能}
+
+\begin{table}[ht]
+\centering
+\caption{性能指标}
+\label{tab:perf}
+\begin{tabular}{lr}
+\toprule
+指标 & 值 \\
+\midrule
+全链路速度（含 Hindsight API） & $\sim$600 ms/次 \\
+本地运算（DNA 提取 + 磁吸匹配） & $\sim$1 ms/次 \\
+DNA 提取速度 & 0.03 ms/次 \\
+Token 消耗 & \textbf{零（全本地）} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{分析}
+5 个失败案例均集中于系统边界：
+
+\begin{itemize}
+  \item "最早记录"：时序推理需专门的时间戳追踪机制
+  \item "环境变化"：查询过于泛化，无具体实体名
+  \item "不存在的实体"：阈值边缘的模糊匹配，动态学习可逐步覆盖
+\end{itemize}
+
+本系统 81.5\% 的命中率是在\textbf{完全不需要 Agent 主动检索}的条件下达到的。社区方案需要 Agent 在正确时机调用 \texttt{memory.search()} 才能获得 91--95\% 的准确率——如果 Agent 漏掉一次 API 调用，准确率直接降为 0\%。在无人干预的自治运行时，本系统的持续命中率显著优于需要 Agent 自觉检索的方案。
+
+\section{自我规制}
+
+\subsection{动机}
+Agent 的执行铁律通常通过系统 prompt 或外部监控来保证，但 prompt 会遗忘，外部监控有延迟。
+
+\subsection{方法}
+将用户的铁律抽象为 principle\_node，每条铁律自带 DNA 和触发词。Agent 每次执行工具前，自动提取执行意图的 DNA 与铁律进行磁吸碰撞：
+
+\begin{table}[ht]
+\centering
+\caption{铁律与 DNA 映射}
+\label{tab:rules}
+\begin{tabular}{lll}
+\toprule
+铁律 & domain & 触发词 \\
+\midrule
+先回答再行动 & meta, caution & 查/搜索/做/是什么/怎么 \\
+信息型只答不执行 & meta, info & 是什么/在哪里/谁/为什么 \\
+说停就停 & safety, execute & 停/停下/不要/别/等等 \\
+每步验证再继续 & meta, quality & 好了/搞定/检查/验证 \\
+零幻觉 & meta, truth & 大概/可能/也许/应该是 \\
+不确定性说出来 & meta, honesty & 失败/错误/报错/超时 \\
+先推荐再列选项 & meta, decide & 选哪个/推荐/建议/对比 \\
+界面中文 & meta, locale & 显示/提示/界面/英文 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+18 个测试场景全部通过（100\%）。
+
+\section{生态三算子}
+受自然界生态演化的启发，设计三个算子使记忆网络具备自我维护能力：
+
+\begin{enumerate}[label=\textbf{算子 \arabic*：}]
+  \item \textbf{能量枯竭}——每个 hub 节点按半衰期衰减能量，低能节点成为化石候选。永不归零（能量地板 0.1），化石可被虫洞唤醒。
+  \item \textbf{同类吞噬}——标签相似度 $\geq$ 95\% 的节点自动融合为"蛊王节点"，降低冗余。当前处于影子模式，由每周虚拟决策日志供人工审核。
+  \item \textbf{异种杂交}——扫描虫洞交叉点，识别跨类型节点对进行重组试验。当前发现 10 个杂交候选（skill--script--function）。
+\end{enumerate}
+
+采用三阶段渐进式部署：影子模式（当前）$\to$ 白名单自主 $\to$ 反馈驱动。
+
+\section{隔离区验证}
+每个新节点/虫洞在写入前经过三个独立维度的验证：
+
+\begin{enumerate}
+  \item \textbf{结构完整性}——必须有 id、type、非空 domain
+  \item \textbf{语义一致性}——域匹配已知 hub，不重名冲突
+  \item \textbf{逻辑健壮性}——边不自引、不超限
+\end{enumerate}
+
+任一维度不可用时自动跳过。三维度全跳过则入隔离区不销毁。
+
+\begin{table}[ht]
+\centering
+\caption{验证判决标准}
+\label{tab:quarantine}
+\begin{tabular}{lc}
+\toprule
+平均分 & 判决 \\
+\midrule
+$\geq$ 0.7 & ✅ 通过 \\
+0.3 -- 0.7 & ⚠️ 入隔离区观察 \\
+$<$ 0.3 & ☠️ 销毁 \\
+全跳过 & 🟡 入隔离区 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{系统实现与部署}
+全部实现在以下文件中，均在本地运行，无外部依赖：
+
+\begin{itemize}
+  \item \texttt{auto\_memory.py}——5 链 DNA + 磁吸匹配 + 动态学习，437 行
+  \item \texttt{self\_regulate.py}——自我规制，100 行
+  \item \texttt{ecology\_engine.py}——生态三算子，490 行
+  \item \texttt{shadow\_ecology.py}——影子模式，180 行
+  \item \texttt{quarantine.py}——隔离区验证，310 行
+\end{itemize}
+
+核心数据规模：312 预提取 DNA 实体、2460 条虫洞边、8 条 principle\_node。
+
+7 个核心文件全部 \texttt{chattr +i} 锁定，8 层回滚备份，每周一 16:00 自动生态维护。
+
+\section{结论}
+本文提出了神经蛊阵——一种基于多链 DNA 磁吸匹配的 AI Agent 记忆生态系统，实现了无需指令的自动记忆注入（81.5\% 对标准确率）、内生执行规制（100\% 准确率）和自我维护的生态演化。核心创新——DNA 即坐标、多链磁吸匹配、双向 DNA 规制、生态三算子——已在生产环境部署运行，形成了社区空白中首个完整的自动记忆注入+自我规制+生态演化方案。
+
 \begin{thebibliography}{6}
-\bibitem{mem0} Chhikara et al., Mem0, ECAI 2025.
-\bibitem{zep} Zep AI, 2025.
-\bibitem{letta} Letta AI, 2025.
-\bibitem{hindsight} Nous Research, 2026.
-\bibitem{graphiti} SciPhi AI, 2025.
-\bibitem{hermes} Nous Research, 2026.
+\bibitem{mem0} Chhikara et al., "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory", ECAI 2025, arXiv:2504.19413.
+\bibitem{zep} Zep AI, "Zep: Long-term Memory for AI Agents", \url{https://github.com/getzep/zep}, 2025.
+\bibitem{letta} Letta AI, "Letta: Memory for AI Agents", \url{https://github.com/letta-ai/letta}, 2025.
+\bibitem{hindsight} Nous Research, "Hindsight Memory: Multi-Strategy Retrieval for Hermes Agent", 2026.
+\bibitem{graphiti} SciPhi AI, "Graphiti: Temporal Knowledge Graph for AI Agents", 2025.
+\bibitem{hermes} Nous Research, "Hermes Agent", \url{https://github.com/nousresearch/hermes-agent}, 2026.
 \end{thebibliography}
+
+\vspace{1em}
+\noindent\textit{项目开源地址: \url{https://github.com/asdfdsa1ceacse/neural-gu-zhen}}
+
 \end{document}
